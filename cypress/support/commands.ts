@@ -35,3 +35,18 @@
 //     }
 //   }
 // }
+
+declare namespace Cypress {
+  interface Chainable {
+    loginToMsaaqDashboard(email: string, password: string): Chainable<void>;
+  }
+}
+
+Cypress.Commands.add(
+  "loginToMsaaqDashboard",
+  (email: string, password: string) => {
+    cy.get("[name=email]").type(email);
+    cy.get("[name=password]").type(password);
+    cy.get("[type=submit]").click();
+  }
+);
