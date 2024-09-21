@@ -41,6 +41,10 @@ class SharedActions {
   formatCourseTitleForUrl(title: string): string {
     return title.toLocaleLowerCase().replace(" ", "-");
   }
+
+  navigateToHome() {
+    cy.get("[alt=MSAAQ]").first().click();
+  }
 }
 
 export default SharedActions;

@@ -157,4 +157,5 @@ Then(
 
 After(() => {
   coursesActions.deleteLastCourseAdded();
+  sharedAction.navigateToHome();
 });
