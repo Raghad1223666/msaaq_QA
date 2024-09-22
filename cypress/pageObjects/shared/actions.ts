@@ -45,6 +45,18 @@ class SharedActions {
   navigateToHome() {
     cy.get("[alt=MSAAQ]").first().click();
   }
+
+  clickOnCancelButton() {
+    cy.contains("Cancel").click({ force: true });
+  }
+
+  clickCancelAndBackButton() {
+    cy.contains("Cancel and back").click();
+  }
+
+  clickOnPublishingTab() {
+    cy.contains("Publishing").click();
+  }
 }
 
 export default SharedActions;

@@ -19,66 +19,8 @@ class CourseActions {
     sharedAction.waitSeconds(3000);
   }
 
-  enterEstimatedTime(hours: number) {
-    cy.get("[name=hours]").type(`${hours}`);
-  }
-
   clickAddNewButton() {
     cy.get("[type=submit]").click();
-  }
-
-  clickAddSectionToCourseButton() {
-    cy.contains("Add section to course").click();
-  }
-
-  clickPdfFileButton() {
-    cy.contains("PDF file").click();
-  }
-
-  typeFileTitle(fileTitle: string) {
-    cy.get(
-      "[placeholder='Enter file title that will be shown to students']"
-    ).type(fileTitle);
-  }
-
-  uploadFile(filePath: string) {
-    cy.get("[type=file]").attachFile(filePath);
-  }
-
-  clickSaveAndContinueButton() {
-    cy.contains("Save and continue").click();
-  }
-
-  clickCourseSettingsTab() {
-    cy.contains("span", "Course settings").click();
-  }
-
-  selectInstructorsFromList() {
-    sharedAction.waitSeconds(5000);
-    cy.contains("Select from list").click({ force: true });
-    sharedAction.waitSeconds(2000);
-    cy.get("#react-select-8-option-0").click({ force: true });
-  }
-
-  selectAppropriateCourseCategory() {
-    sharedAction.waitSeconds(2000);
-    cy.contains("Select the appropriate course category").click({
-      force: true,
-    });
-    sharedAction.waitSeconds(2000);
-    cy.get("#react-select-13-option-0").click({ force: true });
-  }
-
-  clickStudentInteractionTab() {
-    cy.contains("Student interaction").click();
-  }
-
-  enableAllowRetestingSwitch() {
-    cy.contains("Allow retesting").click();
-  }
-
-  clickSaveChangesButton() {
-    cy.contains("Save changes").click();
   }
 
   choosePublishOption() {
@@ -87,6 +29,10 @@ class CourseActions {
 
   clickGoToTheCourseButton() {
     cy.contains("Go to the course").click();
+  }
+
+  clickSaveAndContinueButton() {
+    cy.contains("Save and continue").click();
   }
 
   deleteLastCourseAdded() {
