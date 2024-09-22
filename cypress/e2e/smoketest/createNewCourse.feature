@@ -42,7 +42,7 @@ Feature: Create a new course functionality
         And Click on the Add new Button
         Then The course should not be added, An error message should be displayed saying "The title must be at least 3 characters."
 
-    @focus     @TC3 @negative #emptyFileUploadSteps.ts
+    @TC3 @negative #emptyFileUploadSteps.ts
     Scenario: Negative Scenario - Verify course publish without uploading file
         When Click on the Content item in the sidebar
         And Click on the Courses item from the Content list
@@ -63,7 +63,7 @@ Feature: Create a new course functionality
         Then The course publishing process fails and a danger alert appeared with the error message "You must add course content in order to update the course status and publish it."
 
 
-    @focus     @TC4 @negative #emptyRequiredFieldsSteps
+    @TC4 @negative #emptyRequiredFieldsSteps
     Scenario: Negative Scenario - Verify course publish without filling most of the required fields
         When Click on the Content item in the sidebar
         And Click on the Courses item from the Content list
