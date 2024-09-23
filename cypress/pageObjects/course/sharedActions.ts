@@ -20,8 +20,6 @@ class CourseActions {
   choosePublishOption() {
     sharedAction.waitSeconds(1000);
     cy.get("#status_published").click();
-    cy.get("#status_draft").click();
-    cy.get("#status_published").click();
   }
 
   clickGoToTheCourseButton() {
