@@ -17,8 +17,3 @@ When("Enable Allow retesting switch", () => {
   studentInteractionTabAction.enableAllowRetestingSwitch();
   studentInteractionTabAction.enableAllowRetestingSwitch();
 });
-
-When("Click on the Save changes Button", () => {
-  sharedAction.waitSeconds(3000);
-  studentInteractionTabAction.clickSaveChangesButton();
-});

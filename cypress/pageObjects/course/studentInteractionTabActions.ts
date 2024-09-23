@@ -6,10 +6,6 @@ class StudentInteractionTabActions {
   enableAllowRetestingSwitch() {
     cy.contains("Allow retesting").click();
   }
-
-  clickSaveChangesButton() {
-    cy.contains("Save changes").click();
-  }
 }
 
 export default StudentInteractionTabActions;

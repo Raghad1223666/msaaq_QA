@@ -1,30 +1,35 @@
 class SharedActions {
-  waitSeconds(seconds: number): this {
+  waitSeconds(seconds: number) {
     cy.wait(seconds);
-    return this;
   }
 
-  visitUrl(url: string): this {
+  visitUrl(url: string) {
     cy.visit(url);
-    return this;
   }
 
-  loginMsaaqDashboard(): this {
+  loginMsaaqDashboard() {
     cy.fixture("data").then((user) => {
-      cy.loginToMsaaqDashboard(user.email, user.password);
+      cy.loginToMsaaqDashboard(
+        user.dashboardUserEmail,
+        user.dashboardUserPassword
+      );
       cy.wait(3000);
     });
-    return this;
   }
 
-  changeTheLanguage(language: string): this {
+  loginToTenantWebsite() {
+    cy.fixture("data").then((user) => {
+      cy.loginToTenantWebsite(user.tenantEmail, user.tenantPassword);
+      cy.wait(3000);
+    });
+  }
+
+  changeTheLanguage(language: string) {
     if (language === "English") {
       cy.contains("English").click();
     } else {
       cy.contains("عربي").click();
     }
-
-    return this;
   }
 
   randomName(itemTitle: string): string {
@@ -32,12 +37,10 @@ class SharedActions {
     return `${itemTitle} ${radomNumber}`;
   }
 
-  typeInTitleInput(itemTitle: string): this {
+  typeInTitleInput(itemTitle: string) {
     cy.get("[name=title]").type(itemTitle);
-    return this;
   }
 
-  //TODO:
   formatCourseTitleForUrl(title: string): string {
     return title.toLocaleLowerCase().replace(" ", "-");
   }
@@ -56,6 +59,70 @@ class SharedActions {
 
   clickOnPublishingTab() {
     cy.contains("Publishing").click();
+  }
+
+  clickAddNewButton() {
+    cy.get("[type=submit]").click();
+  }
+
+  clickSaveAndContinueButton() {
+    cy.contains("Save and continue").click();
+  }
+
+  clickSaveChangesButton() {
+    cy.contains("Save changes").click();
+  }
+
+  clickModifyCourseButton() {
+    cy.contains("Modify course").click();
+  }
+
+  clickContentItemInSidebar() {
+    cy.contains("a", "Content").click();
+  }
+
+  clickCoursesItemFromContentList() {
+    cy.contains("div", "Courses").click();
+  }
+
+  clickAddQuestion() {
+    cy.contains("Add a question").click();
+  }
+
+  clickConfirmChangeButton() {
+    cy.contains("Confirm the change").click();
+  }
+
+  clickOnTheSection(sectionTitle: string) {
+    cy.contains(sectionTitle).click();
+  }
+
+  navigateToCourse(courseTitle: string) {
+    cy.contains(courseTitle).click();
+  }
+
+  clickSearchIconButton() {
+    cy.get(".search-button").click();
+  }
+
+  clickSearchButton() {
+    cy.contains("ابحث").click();
+  }
+
+  typeCourseNameInSearchInput(courseTitle: string) {
+    cy.get("[aria-labelledby=search]").type(courseTitle);
+  }
+
+  clickJoinNowForFree() {
+    cy.contains("انضم الآن مجانًا").click();
+  }
+
+  clickBuyForFree() {
+    cy.contains("إتمام الشراء بشكل مجاني").click();
+  }
+
+  clickFollowTheCourse() {
+    cy.contains("متابعة الدورة").click();
   }
 }
 

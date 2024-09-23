@@ -16,7 +16,7 @@ When(
 When(
   "Type the Section title in the Title input field within the Add section popup",
   () => {
-    sharedAction.waitSeconds(500);
+    sharedAction.waitSeconds(1000);
     sharedAction.typeInTitleInput(sharedAction.randomName("Section"));
   }
 );

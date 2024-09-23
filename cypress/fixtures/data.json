@@ -1,4 +1,6 @@
 {
-    "email": "alfawal+19-sep-e2e-assignment@msaaq.com",
-    "password":"dashboard-19-sep-e2e-assignment-password"
+    "dashboardUserEmail": "alfawal+19-sep-e2e-assignment@msaaq.com",
+    "dashboardUserPassword":"dashboard-19-sep-e2e-assignment-password",
+    "tenantEmail": "alfawal+19-sep-e2e-assignment@msaaq.com",
+    "tenantPassword":"tenant-19-sep-e2e-assignment-password"
 }

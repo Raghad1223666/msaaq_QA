@@ -1,12 +1,12 @@
 import { When } from "@badeball/cypress-cucumber-preprocessor";
-import CoursesActions from "../../../../pageObjects/course/actions";
+import SharedActions from "../../../../pageObjects/shared/actions";
 
-const coursesActions = new CoursesActions();
+const sharedActions = new SharedActions();
 
 When("Click on the Content item in the sidebar", () => {
-  coursesActions.clickContentItemInSidebar();
+  sharedActions.clickContentItemInSidebar();
 });
 
 When("Click on the Courses item from the Content list", () => {
-  coursesActions.clickCoursesItemFromContentList();
+  sharedActions.clickCoursesItemFromContentList();
 });

@@ -3,21 +3,21 @@ import SharedActions from "../../../../pageObjects/shared/actions";
 import CourseSettingsTabActions from "../../../../pageObjects/course/courseSettingsTabActions";
 
 const sharedAction = new SharedActions();
-const courseSettingsTabActions = new CourseSettingsTabActions();
+const courseSettingsTabAction = new CourseSettingsTabActions();
 
 When("Click on the Course settings Tab", () => {
   sharedAction.waitSeconds(2000);
-  courseSettingsTabActions.clickCourseSettingsTab();
+  courseSettingsTabAction.clickCourseSettingsTab();
 });
 
 When("Select Instructors from list", () => {
-  courseSettingsTabActions.selectInstructorsFromList();
+  courseSettingsTabAction.selectInstructorsFromList();
 });
 
 When("Enter Estimated time to complete the course", () => {
-  courseSettingsTabActions.enterEstimatedTime(30);
+  courseSettingsTabAction.enterEstimatedTime(30);
 });
 
 When("Select the appropriate course category", () => {
-  courseSettingsTabActions.selectAppropriateCourseCategory();
+  courseSettingsTabAction.selectAppropriateCourseCategory();
 });

@@ -49,5 +49,7 @@ export default defineConfig({
     baseUrl: "https://app.msaaqdev.com",
     specPattern: "**/*.feature",
     setupNodeEvents,
+    viewportHeight: 700,
+    viewportWidth: 1200,
   },
 });

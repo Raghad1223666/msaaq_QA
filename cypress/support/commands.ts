@@ -39,13 +39,30 @@
 declare namespace Cypress {
   interface Chainable {
     loginToMsaaqDashboard(email: string, password: string): Chainable<void>;
+    loginToTenantWebsite(email: string, password: string): Chainable<void>;
+    getByTestId(testId: string): Chainable<JQuery<HTMLElement>>;
   }
 }
+
+Cypress.Commands.add("getByTestId", (testId: string) => {
+  return cy.get(`[data-testid="${testId}"]`);
+});
 
 Cypress.Commands.add(
   "loginToMsaaqDashboard",
   (email: string, password: string) => {
     cy.get("[name=email]").type(email);
+    cy.get("[name=password]").type(password);
+    cy.get("[type=submit]").click();
+  }
+);
+
+Cypress.Commands.add(
+  "loginToTenantWebsite",
+  (email: string, password: string) => {
+    cy.getByTestId("login-button").click();
+    cy.get("[name=email]").type(email);
+    cy.get("[type=submit]").click();
     cy.get("[name=password]").type(password);
     cy.get("[type=submit]").click();
   }

@@ -1,10 +1,10 @@
 import { When, Then, After } from "@badeball/cypress-cucumber-preprocessor";
 import SharedActions from "../../../../pageObjects/shared/actions";
-import CoursesActions from "../../../../pageObjects/course/actions";
-import CoursesAssertions from "../../../../pageObjects/course/assertions";
+import CoursesActions from "../../../../pageObjects/course/sharedActions";
+import CoursesAssertions from "../../../../pageObjects/course/sharedAssertions";
 
 const sharedAction = new SharedActions();
-const coursesActions = new CoursesActions();
+const courseAction = new CoursesActions();
 const coursesAssertion = new CoursesAssertions();
 const coursesPageTenantWebsite: string =
   "https://19-sep-e2e-assignment.msaaqdev.com/courses";
@@ -12,7 +12,7 @@ let courseTitle: string;
 
 When("From Publishing Tab Choose Publish option", () => {
   sharedAction.waitSeconds(3000);
-  coursesActions.choosePublishOption();
+  courseAction.choosePublishOption();
 });
 
 Then(
@@ -24,7 +24,7 @@ Then(
 );
 
 When("Click on the Go to the course Button", () => {
-  coursesActions.clickGoToTheCourseButton();
+  courseAction.clickGoToTheCourseButton();
 });
 
 Then("The Courses page must be opened on the tenant's website", () => {
@@ -46,6 +46,6 @@ Then(
 );
 
 After({ tags: "@TC1" }, () => {
-  coursesActions.deleteLastCourseAdded();
+  courseAction.deleteLastCourseAdded();
   sharedAction.navigateToHome();
 });

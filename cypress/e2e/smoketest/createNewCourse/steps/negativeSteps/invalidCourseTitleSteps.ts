@@ -8,7 +8,7 @@ const sharedAssertion = new SharedAssertions();
 When(
   "Type the Course title {string} in the Title input field within the Add Course popup",
   (courseTitle: string) => {
-    sharedAction.waitSeconds(500);
+    sharedAction.waitSeconds(1000);
     sharedAction.typeInTitleInput(courseTitle);
   }
 );

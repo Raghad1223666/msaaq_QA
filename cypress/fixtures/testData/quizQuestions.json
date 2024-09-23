@@ -1,0 +1,32 @@
+{
+    "questions":[
+       {
+          "question":"Q1: Which testing type is performed to verify if the individual units or modules of the software work as expected?",
+          "options":[
+             "op1: System testing",
+             "op2: Unit testing"
+          ]
+       },
+       {
+          "question":"Q2: What is the primary goal of Software Quality Assurance (SQA)?",
+          "options":[
+             "op1: Quality improvement",
+             "op2: Testing"
+          ]
+       },
+       {
+          "question":"Q3: Which testing technique involves testing the software's behavior against a set of input values?",
+          "options":[
+             "op1: Boundary value analysis",
+             "op2: Equivalence partitioning"
+          ]
+       },
+       {
+          "question":"Q4: What is the purpose of a test plan?",
+          "options":[
+             "op1: To document the testing strategy and approach",
+             "op2: To analyze code complexity"
+          ]
+       }
+    ]
+ }

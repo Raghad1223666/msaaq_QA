@@ -1,6 +1,6 @@
 import { Then, After } from "@badeball/cypress-cucumber-preprocessor";
 import SharedActions from "../../../../../pageObjects/shared/actions";
-import CourseActions from "../../../../../pageObjects/course/actions";
+import CourseActions from "../../../../../pageObjects/course/sharedActions";
 
 const courseAction = new CourseActions();
 const sharedAction = new SharedActions();

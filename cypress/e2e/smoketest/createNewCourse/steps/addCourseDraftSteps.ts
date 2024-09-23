@@ -1,14 +1,14 @@
 import { When } from "@badeball/cypress-cucumber-preprocessor";
 import SharedActions from "../../../../pageObjects/shared/actions";
-import CoursesActions from "../../../../pageObjects/course/actions";
+import CoursesActions from "../../../../pageObjects/course/sharedActions";
 
 const sharedAction = new SharedActions();
-const coursesActions = new CoursesActions();
+const coursesAction = new CoursesActions();
 let courseTitleDraft: string;
 
 When("Click on the Create course Button", () => {
   sharedAction.waitSeconds(3000);
-  coursesActions.clickCreateCourseButton();
+  coursesAction.clickCreateCourseButton();
   sharedAction.waitSeconds(3000);
 });
 
