@@ -2,7 +2,6 @@ import { When } from "@badeball/cypress-cucumber-preprocessor";
 import SharedActions from "../../../../pageObjects/shared/actions";
 
 const sharedAction = new SharedActions();
-// let courseTitle: string;
 
 When("Click on search icon from the header", () => {
   sharedAction.waitSeconds(2000);
