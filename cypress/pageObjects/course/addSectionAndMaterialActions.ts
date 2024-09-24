@@ -1,7 +1,3 @@
-import sharedActions from "../shared/actions";
-
-const sharedAction = new sharedActions();
-
 class AddSectionAndMaterialActions {
   clickAddSectionToCourseButton() {
     cy.contains("Add section to course").click();

@@ -19,7 +19,10 @@ class CourseActions {
 
   choosePublishOption() {
     sharedAction.waitSeconds(1000);
-    //TODO
+    /*There is bug in the website here, 
+      I had to click the switch multiple times
+      for the save button to activate
+   */
     cy.get("#status_published").click();
     cy.get("#status_draft").click();
     cy.get("#status_published").click();
@@ -42,6 +45,9 @@ class CourseActions {
     cy.contains("Confirm deletion").click();
   }
 
+  /* Create course -- to use it in the before hook for 
+  Add Quiz test case and Quiz Details test case
+  */
   createNewCourse(
     courseTitle: string,
     sectionTitle: string,
