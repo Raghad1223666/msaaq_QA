@@ -47,6 +47,7 @@ When(
           Cypress.env("areTwoArrayEqualsValue", areTwoArrayEquals);
         }
       });
+
     // Select the option for the current question.
     quizDetailsAction.clickOnTheOption(option - 1);
   }
