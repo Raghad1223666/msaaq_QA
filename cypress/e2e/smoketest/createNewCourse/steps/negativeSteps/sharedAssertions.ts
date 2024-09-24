@@ -13,6 +13,12 @@ Then(
   }
 );
 
+/*
+  After the Add Quiz test case - Postconditions:
+  Delete the course
+  Actually, we would use the API to automate the course deletion
+  but I didn't have the API documentation.
+   */
 After({ tags: "@TC3 or @TC4" }, () => {
   courseAction.deleteLastCourseAdded();
   sharedAction.navigateToHome();
