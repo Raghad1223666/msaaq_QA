@@ -1,9 +1,7 @@
-import { When, After } from "@badeball/cypress-cucumber-preprocessor";
+import { When } from "@badeball/cypress-cucumber-preprocessor";
 import SharedActions from "../../../../pageObjects/shared/actions";
-import CoursesActions from "../../../../pageObjects/course/sharedActions";
 
 const sharedAction = new SharedActions();
-const coursesActions = new CoursesActions();
 
 When("Click on the Save and continue Button", () => {
   sharedAction.waitSeconds(4000);

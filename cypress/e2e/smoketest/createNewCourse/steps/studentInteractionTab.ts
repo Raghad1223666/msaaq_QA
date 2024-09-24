@@ -12,7 +12,10 @@ When("Click on the Student interaction Tab", () => {
 
 When("Enable Allow retesting switch", () => {
   sharedAction.waitSeconds(3000);
-  //TODO
+  /*There is bug in the website here, 
+  I had to click the switch multiple times
+   for the save button to activate
+   */
   studentInteractionTabAction.enableAllowRetestingSwitch();
   studentInteractionTabAction.enableAllowRetestingSwitch();
   studentInteractionTabAction.enableAllowRetestingSwitch();
