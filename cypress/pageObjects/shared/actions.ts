@@ -33,7 +33,7 @@ class SharedActions {
   }
 
   randomName(itemTitle: string): string {
-    const radomNumber = Math.floor(Math.random() * 100);
+    const radomNumber = Math.floor(Math.random() * 1000);
     return `${itemTitle} ${radomNumber}`;
   }
 

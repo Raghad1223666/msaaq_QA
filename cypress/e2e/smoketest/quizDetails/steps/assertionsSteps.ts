@@ -1,4 +1,7 @@
 import { Then } from "@badeball/cypress-cucumber-preprocessor";
+import QuizDetailsAssertions from "../../../../pageObjects/quizDetails/assertions";
+
+const quizDetailsAssertion = new QuizDetailsAssertions();
 
 Then(
   "The questions are displayed in a randomized order, Also each question's content matching what was added",
@@ -13,8 +16,5 @@ Then(
 );
 
 Then("The Retest button becomes visible after the quiz is completed", () => {
-  cy.get(".abjad-card-footer [type=button]").should(
-    "contain",
-    "إعادة الاختبار"
-  );
+  quizDetailsAssertion.checkRetestButtonVisibility();
 });
