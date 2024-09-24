@@ -19,6 +19,9 @@ class CourseActions {
 
   choosePublishOption() {
     sharedAction.waitSeconds(1000);
+    //TODO
+    cy.get("#status_published").click();
+    cy.get("#status_draft").click();
     cy.get("#status_published").click();
   }
 
@@ -50,7 +53,7 @@ class CourseActions {
 
     sharedAction.typeInTitleInput(courseTitle);
     sharedAction.clickAddNewButton();
-    sharedAction.waitSeconds(2000);
+    sharedAction.waitSeconds(3000);
 
     addSectionAndMaterialAction.clickAddSectionToCourseButton();
     sharedAction.waitSeconds(1000);

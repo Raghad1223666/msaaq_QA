@@ -4,6 +4,7 @@ import QuizActions from "../../../../pageObjects/quiz/actions";
 
 const sharedAction = new SharedActions();
 const quizAction = new QuizActions();
+const quizSummary: string = "brief summary of the Quiz.";
 
 When("Click on the Quiz settings Tab", () => {
   quizAction.clickQuizSettingsTab();
@@ -11,7 +12,7 @@ When("Click on the Quiz settings Tab", () => {
 });
 
 When("Type summary in the Quiz summary input field", () => {
-  quizAction.typeInQuizSummaryInput("brief summary of the Quiz.");
+  quizAction.typeInQuizSummaryInput(quizSummary);
 });
 
 When("Enable Arrange questions randomly switch", () => {

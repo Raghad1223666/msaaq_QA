@@ -9,6 +9,7 @@ class QuizDetailsActions {
     cy.contains("ابدأ الاختبار").click();
   }
 
+  // Store in the array the current arrangement of questions displayed in the quiz
   storeQuestionsArrangeFromQuiz = (
     currentQuestion: number,
     numberOfQuestions: number
@@ -27,6 +28,8 @@ class QuizDetailsActions {
       });
   };
 
+  // Check for arrangement
+  // Check if the questions are rearranged compared to the original order
   checkAreQuestionsRearranged = (
     questionsFromQuiz: string[],
     originalQuestionsArrange: string[]
@@ -38,6 +41,7 @@ class QuizDetailsActions {
     });
   };
 
+  // Check Questions content, check if the questions in the current quiz are the same as the original
   areArraysEqual = (
     questionsFromQuiz: string[],
     originalQuestionsArrange: string[]

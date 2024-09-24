@@ -10,9 +10,8 @@ Feature: Check Quiz details
         When Click on search icon from the header
         And Type course name in the search input field
         And Click on the Search Button
-        # TODO Back
-        # And Click on the Join now for free Button
-        # And Click on the Buy for free Button
+        And Click on the Join now for free Button
+        And Click on the Buy for free Button
         And Click on the Follow the course Button
 
         # Implementation in the quizInteractionSteps.ts

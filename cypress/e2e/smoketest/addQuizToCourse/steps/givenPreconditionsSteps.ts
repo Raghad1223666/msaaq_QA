@@ -9,6 +9,13 @@ let sectionTitle: string;
 let fileTitle: string;
 
 before(() => {
+  /* 
+  Before running the Add Quiz test case - Preconditions:
+  Create Course
+  Actually, we would use the API to automate the course creation 
+  as part of the setup process for this test, 
+  but I didn't have the API documentation.
+*/
   cy.visit("/");
   sharedAction.changeTheLanguage("English");
   sharedAction.waitSeconds(3000);

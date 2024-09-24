@@ -26,16 +26,20 @@ When(
   (option: number, questionNumber: number) => {
     const numberOfQuestions = originalQuestionsArrange.length;
 
+    // Store in the array the current arrangement of questions displayed in the quiz
     quizDetailsAction
       .storeQuestionsArrangeFromQuiz(questionNumber, numberOfQuestions)
       .then((questionsArrangeFromExam) => {
+        // If the user is answering the last question,
         if (questionNumber === numberOfQuestions) {
+          // Check for arrangement
+          // Check if the questions are rearranged compared to the original order
           const areReArranged = quizDetailsAction.checkAreQuestionsRearranged(
             questionsArrangeFromExam,
             originalQuestionsArrange
           );
           Cypress.env("areReArrangedValue", areReArranged);
-
+          // Check Questions content, check if the questions in the current quiz are the same as the original
           const areTwoArrayEquals = quizDetailsAction.areArraysEqual(
             questionsArrangeFromExam,
             originalQuestionsArrange
@@ -43,7 +47,7 @@ When(
           Cypress.env("areTwoArrayEqualsValue", areTwoArrayEquals);
         }
       });
-
+    // Select the option for the current question.
     quizDetailsAction.clickOnTheOption(option - 1);
   }
 );

@@ -1,43 +1,31 @@
 import SharedActions from "../shared/actions";
-import CourseActions from "../course/sharedActions";
-import AddSectionAndMaterialActions from "../course/addSectionAndMaterialActions";
-import CourseSettingsTabActions from "../course/courseSettingsTabActions";
-import StudentInteractionTabActions from "../course/studentInteractionTabActions";
 
 const sharedAction = new SharedActions();
-const courseAction = new CourseActions();
-const addSectionAndMaterialAction = new AddSectionAndMaterialActions();
-const courseSettingsTabAction = new CourseSettingsTabActions();
-const studentInteractionTabAction = new StudentInteractionTabActions();
 
 class QuizActions {
   clickOnQuizButton() {
     cy.contains(/^Quiz$/).click();
   }
 
+  //Adds a multiple choice question to a quiz
   addMultipleChoiceQuestion(
     questionText: string,
     options: string[],
     correctOptionNumber: number
   ) {
-    // Add the question text
     cy.get(".ContentEditable__root").eq(0).type(questionText);
 
-    // Loop through the options and fill them
     options.forEach((option, index) => {
       if (index === 0) {
-        // First option
         cy.get(".ContentEditable__root").eq(1).type(option);
       } else {
-        // Second option
         cy.contains("Add option").click();
         cy.get(".ContentEditable__root").eq(2).type(option);
       }
     });
 
-    // Select the correct answer
     cy.get(`[name='choices.${correctOptionNumber - 1}.credited']`).click();
-    // Save The Question
+
     sharedAction.clickSaveAndContinueButton();
     sharedAction.clickConfirmChangeButton();
   }
@@ -52,6 +40,53 @@ class QuizActions {
 
   clickArrangeQuestionsRandomlySwitch() {
     cy.get(".abjad-toggler").eq(3).click();
+  }
+
+  // Add Quiz -- to use it in the before hook for Quiz Details test case
+  addQuizToCourse(
+    courseTitle: string,
+    sectionTitle: string,
+    quizTitle: string,
+    quizSummary: string
+  ) {
+    sharedAction.waitSeconds(5000);
+    sharedAction.clickCoursesItemFromContentList();
+    sharedAction.waitSeconds(6000);
+    sharedAction.navigateToCourse(courseTitle);
+    sharedAction.waitSeconds(6000);
+    sharedAction.clickModifyCourseButton();
+    sharedAction.waitSeconds(6000);
+    sharedAction.clickOnTheSection(sectionTitle);
+    sharedAction.waitSeconds(500);
+    this.clickOnQuizButton();
+
+    sharedAction.waitSeconds(1000);
+    sharedAction.typeInTitleInput(quizTitle);
+    sharedAction.clickAddNewButton();
+    sharedAction.waitSeconds(4000);
+
+    cy.fixture("./testData/quizQuestions").then((data) => {
+      data.questions.forEach((_, index) => {
+        sharedAction.waitSeconds(5000);
+        sharedAction.clickAddQuestion();
+        sharedAction.waitSeconds(4000);
+
+        this.addMultipleChoiceQuestion(
+          data.questions[index].question,
+          data.questions[index].options,
+          1
+        );
+      });
+    });
+    sharedAction.waitSeconds(5000);
+
+    this.clickQuizSettingsTab();
+    sharedAction.waitSeconds(1000);
+
+    this.typeInQuizSummaryInput(quizSummary);
+    this.clickArrangeQuestionsRandomlySwitch();
+    sharedAction.clickSaveAndContinueButton();
+    sharedAction.clickConfirmChangeButton();
   }
 }
 
