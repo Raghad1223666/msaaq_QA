@@ -31,7 +31,7 @@ before(() => {
   Cypress.env("sectionTitleValue", sectionTitle);
 
   fileTitle = sharedAction.randomName("File");
-  courseAction.createNewCourse(courseTitle, sectionTitle, fileTitle);
+  courseAction.createNewCourse({ courseTitle, sectionTitle, fileTitle });
   cy.reload();
 });
 

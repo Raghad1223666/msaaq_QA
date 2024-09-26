@@ -2,6 +2,7 @@ import sharedActions from "../shared/actions";
 import AddSectionAndMaterialAction from "./addSectionAndMaterialActions";
 import StudentInteractionTabActions from "./studentInteractionTabActions";
 import CourseSettingsTabActions from "./courseSettingsTabActions";
+import { CourseInfo } from "../../support/interfaces";
 
 const sharedAction = new sharedActions();
 const addSectionAndMaterialAction = new AddSectionAndMaterialAction();
@@ -48,11 +49,8 @@ class CourseActions {
   /* Create course -- to use it in the before hook for 
   Add Quiz test case and Quiz Details test case
   */
-  createNewCourse(
-    courseTitle: string,
-    sectionTitle: string,
-    fileTitle: string
-  ) {
+  createNewCourse(courseInformation: CourseInfo) {
+    let { courseTitle, sectionTitle, fileTitle } = courseInformation;
     this.clickCreateCourseButton();
 
     sharedAction.waitSeconds(500);

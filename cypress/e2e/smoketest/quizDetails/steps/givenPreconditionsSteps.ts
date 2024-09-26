@@ -37,13 +37,18 @@ before(() => {
 
   fileTitle = sharedAction.randomName("File");
   //Create Course
-  courseAction.createNewCourse(courseTitle, sectionTitle, fileTitle);
+  courseAction.createNewCourse({ courseTitle, sectionTitle, fileTitle });
   cy.reload();
 
   quizTitle = sharedAction.randomName("quiz");
   Cypress.env("quizTitleValue", quizTitle);
   //Add Quiz
-  quizAction.addQuizToCourse(courseTitle, sectionTitle, quizTitle, quizSummary);
+  quizAction.addQuizToCourse({
+    courseTitle,
+    sectionTitle,
+    quizTitle,
+    quizSummary,
+  });
   sharedAction.waitSeconds(500);
 });
 

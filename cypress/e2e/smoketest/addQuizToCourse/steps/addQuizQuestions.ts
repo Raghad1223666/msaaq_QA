@@ -47,11 +47,13 @@ When(
   "Add question {int} and related options, correct option {int}",
   (questionNumber: number, correctOption: number) => {
     cy.fixture("./testData/quizQuestions").then((data) => {
-      quizAction.addMultipleChoiceQuestion(
-        data.questions[questionNumber - 1].question,
-        data.questions[questionNumber - 1].options,
-        correctOption
-      );
+      let questionText = data.questions[questionNumber - 1].question;
+      let options: string[] = [...data.questions[questionNumber - 1].options];
+      quizAction.addMultipleChoiceQuestion({
+        questionText,
+        options,
+        correctOptionNumber: correctOption,
+      });
     });
     sharedAction.waitSeconds(3000);
   }

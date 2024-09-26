@@ -1,4 +1,5 @@
 import SharedActions from "../shared/actions";
+import { QuizInfo, QuestionDetails } from "../../support/interfaces";
 
 const sharedAction = new SharedActions();
 
@@ -8,11 +9,8 @@ class QuizActions {
   }
 
   //Adds a multiple choice question to a quiz
-  addMultipleChoiceQuestion(
-    questionText: string,
-    options: string[],
-    correctOptionNumber: number
-  ) {
+  addMultipleChoiceQuestion(questionDetails: QuestionDetails) {
+    let { questionText, options, correctOptionNumber } = questionDetails;
     cy.get(".ContentEditable__root").eq(0).type(questionText);
 
     options.forEach((option, index) => {
@@ -43,12 +41,9 @@ class QuizActions {
   }
 
   // Add Quiz -- to use it in the before hook for Quiz Details test case
-  addQuizToCourse(
-    courseTitle: string,
-    sectionTitle: string,
-    quizTitle: string,
-    quizSummary: string
-  ) {
+  addQuizToCourse(quizInformation: QuizInfo) {
+    let { courseTitle, sectionTitle, quizTitle, quizSummary } = quizInformation;
+
     sharedAction.waitSeconds(5000);
     sharedAction.clickCoursesItemFromContentList();
     sharedAction.waitSeconds(6000);
@@ -70,12 +65,13 @@ class QuizActions {
         sharedAction.waitSeconds(5000);
         sharedAction.clickAddQuestion();
         sharedAction.waitSeconds(4000);
-
-        this.addMultipleChoiceQuestion(
-          data.questions[index].question,
-          data.questions[index].options,
-          1
-        );
+        let questionText = data.questions[index].question;
+        let options: string[] = [...data.questions[index].options];
+        this.addMultipleChoiceQuestion({
+          questionText,
+          options,
+          correctOptionNumber: 1,
+        });
       });
     });
     sharedAction.waitSeconds(5000);
